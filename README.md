@@ -1,0 +1,64 @@
+# parteye.py #
+
+Acts as a glue between [zbar](http://zbar.sourceforge.net/) and
+[Partkeepr](https://www.partkeepr.org/).  
+A good way of repurpose an old webcam !
+
+For now it only works with [TME](https://www.tme.eu/), the polish electronics
+parts distributor.  On their orders, they place a little QR code on each
+package with some info. With that and the distributor's API ... no need to type
+anymore !
+
+I'll probably extend it to work with [Farnell/Element14](http://farnell.com) if
+I place an order soon, as they too have a reasonably good API and maybe they do
+something similar with their packages
+
+# requirements #
+
+As far as I know, python3 and [requests
+](http://docs.python-requests.org/en/master/) library.
+
+# usage #
+
+First configure the thing. Create a file named `config.ini` in the same folder
+as the script. It should look like this:
+
+```
+[tme]
+token = your_tme_api_token
+secret = your_tme_api_secret
+
+[partkeepr]
+user = your_pk_username
+pwd = your_pk_password
+url = http://your_pk_url
+
+```
+
+And then basically, pass the output of zbar to the script via pipe:
+
+```
+zbarcam --raw /dev/video0 | ./parteye.py
+```
+
+On [Arch Linux](https://www.archlinux.org/) you may need a little bit of
+tweaking because of zbar ...:
+
+```
+LD_PRELOAD=/usr/lib/libv4l/v4l1compat.so zbarcam --raw /dev/video0 | ./parteye.py
+```
+
+# notes #
+
+The script places the new part under a category at root level named `00 - QR-reader`.
+For the location uses one named _"Sense-Ordenar"_.  
+You can change that on request.json.
+
+Partkeepr API doc is literally non-existent ... So if you want to tweak this,
+you'll have to make good use of _Developer tools_ on your browser.
+
+# license #
+
+For what it's worth .. this goes under MIT license.
+
+Beep sound by _kalisemorrison_. Find more [here](https://freesound.org/people/kalisemorrison/)
