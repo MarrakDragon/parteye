@@ -1,3 +1,11 @@
+** This repo has been moved ! **
+
+I might keep pushing to this github repo, but upstream is now:
+
+  https://git.onna.be/parteye/
+
+----------------------------------------------------------------------------
+
 # parteye.py #
 
 Acts as a glue between [zbar](http://zbar.sourceforge.net/) and
@@ -56,6 +64,11 @@ You can change that on request.json.
 
 Partkeepr API doc is literally non-existent ... So if you want to tweak this,
 you'll have to make good use of _Developer tools_ on your browser.
+
+# bugs #
+
+Patches are welcome.
+If you find any bugs, please contact me: https://onna.be/contact.html
 
 # license #
 
